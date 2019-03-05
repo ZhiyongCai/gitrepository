@@ -28,3 +28,10 @@ git checkout -- file.name 把文件在工作区的修改全部撤销，回到最近的一次git commit
 rm test.txt 删除工作区文件   如果文件删除错了，可以用checkout找回，其实就是回溯到上一版本
 
 git rm test.txt 从版本库中删除test文件 之后需要commit一下确认修改
+
+添加远程仓库：
+git remote add origin git@github.com:ZhiyongCai/gitrepository.git
+关联github远程仓库， origin 是远程库名字，git默认叫法 
+$ git push -u origin master    
+下一步，把本地库的所有内容推送到远程库上   -u 参数会把本地master分支内容推送到远程新的master分支，并且会把本地的master分支和远程的master分支关联起来，方便以后推送或拉取时简化命令：git push origin master
+
