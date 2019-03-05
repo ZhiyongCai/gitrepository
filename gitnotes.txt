@@ -35,3 +35,4 @@ git remote add origin git@github.com:ZhiyongCai/gitrepository.git
 $ git push -u origin master    
 下一步，把本地库的所有内容推送到远程库上   -u 参数会把本地master分支内容推送到远程新的master分支，并且会把本地的master分支和远程的master分支关联起来，方便以后推送或拉取时简化命令：git push origin master
 
+git clone 将远程库克隆到当前目录下
