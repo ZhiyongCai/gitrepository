@@ -23,4 +23,4 @@ git reset --hard commit_id   回溯到 head指向的commit_id版本
 git reflog  显示 你的每一次命令，包含了当前版本的commit_id
 
 git checkout -- file.name 把文件在工作区的修改全部撤销，回到最近的一次git commit或git add状态
-
+当你git add后，还没git commit， 可以先用git reset HEAD file。name 把暂存区的的修改撤销（unstage），然后再用git checkout丢弃修改
