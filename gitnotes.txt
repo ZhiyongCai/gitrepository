@@ -36,3 +36,36 @@ $ git push -u origin master
 下一步，把本地库的所有内容推送到远程库上   -u 参数会把本地master分支内容推送到远程新的master分支，并且会把本地的master分支和远程的master分支关联起来，方便以后推送或拉取时简化命令：git push origin master
 
 git clone 将远程库克隆到当前目录下
+
+
+分支管理：
+git checkout -b dev 等同于一下两句：
+git branch dev       创建dev分支
+git checkout dev    切换到dev分支
+
+git branch  命令会列出所有分支，在当前分支前会加个*号
+
+git merge dev 将dev分支的工作成果合并到master分支上
+git branch -d dev 合并完成后， 可以删除dev分支
+
+分支管理策略：
+通常分支合并时，Git会用Fast Forward模式，这种模式下删除分支后会丢掉分支信息
+如果禁用这种模式，Git就会在merge的时候生成一个commit，这样就可以查看分支合并的信息
+git merge --no-ff -m “comment” dev
+合并的同时把commit描述添加进去
+
+解决冲突：
+当不同分支试图把各自的修改合并时，可能存在冲突，解决冲突的办法是手动解决。
+合并时会告知冲突的地方，也可以通过git status找到冲突的地方
+git log --graph 可以查看分支合并图
+git log --graph --pretty=oneline --abbrev-commit 
+
+
+bug分支：
+
+修复bug时，先看看需要在哪个分支修复bug，用checkout切换到该分支后再创建bug临时分支，修复完成后合并，最后删除；
+当手头工作没完成时，先把工作现场git stash一下，然后区修复bug，修复后，再回到工作现场
+回到工作现场有两种方式：
+git stash apply 恢复后，stash内容并不删除，可以用git stash drop删除
+git stash pop 恢复的同时把stash内容删除
+git stash list可以查看stash内容
